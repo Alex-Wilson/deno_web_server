@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+body {
+    background-color: #2a2a2a;
+    margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 255, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-link {
+    color: #00ff00;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.ascii-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: auto;
+}
+
+@keyframes rainbowBorder {
+    0% { text-shadow: 
+        -1px -1px 0 #ff0000,  
+         1px -1px 0 #ff0000,
+        -1px  1px 0 #ff0000,
+         1px  1px 0 #ff0000,
+        -2px -2px 0 #ff0000,
+         2px -2px 0 #ff0000,
+        -2px  2px 0 #ff0000,
+         2px  2px 0 #ff0000; }
+    15% { text-shadow: 
+        -1px -1px 0 #ff8000,  
+         1px -1px 0 #ff8000,
+        -1px  1px 0 #ff8000,
+         1px  1px 0 #ff8000,
+        -2px -2px 0 #ff8000,
+         2px -2px 0 #ff8000,
+        -2px  2px 0 #ff8000,
+         2px  2px 0 #ff8000; }
+    30% { text-shadow: 
+        -1px -1px 0 #ffff00,  
+         1px -1px 0 #ffff00,
+        -1px  1px 0 #ffff00,
+         1px  1px 0 #ffff00,
+        -2px -2px 0 #ffff00,
+         2px -2px 0 #ffff00,
+        -2px  2px 0 #ffff00,
+         2px  2px 0 #ffff00; }
+    45% { text-shadow: 
+        -1px -1px 0 #00ff00,  
+         1px -1px 0 #00ff00,
+        -1px  1px 0 #00ff00,
+         1px  1px 0 #00ff00,
+        -2px -2px 0 #00ff00,
+         2px -2px 0 #00ff00,
+        -2px  2px 0 #00ff00,
+         2px  2px 0 #00ff00; }
+    60% { text-shadow: 
+        -1px -1px 0 #0000ff,  
+         1px -1px 0 #0000ff,
+        -1px  1px 0 #0000ff,
+         1px  1px 0 #0000ff,
+        -2px -2px 0 #0000ff,
+         2px -2px 0 #0000ff,
+        -2px  2px 0 #0000ff,
+         2px  2px 0 #0000ff; }
+    75% { text-shadow: 
+        -1px -1px 0 #4b0082,  
+         1px -1px 0 #4b0082,
+        -1px  1px 0 #4b0082,
+         1px  1px 0 #4b0082,
+        -2px -2px 0 #4b0082,
+         2px -2px 0 #4b0082,
+        -2px  2px 0 #4b0082,
+         2px  2px 0 #4b0082; }
+    90% { text-shadow: 
+        -1px -1px 0 #8b00ff,  
+         1px -1px 0 #8b00ff,
+        -1px  1px 0 #8b00ff,
+         1px  1px 0 #8b00ff,
+        -2px -2px 0 #8b00ff,
+         2px -2px 0 #8b00ff,
+        -2px  2px 0 #8b00ff,
+         2px  2px 0 #8b00ff; }
+    100% { text-shadow: 
+        -1px -1px 0 #ff0000,  
+         1px -1px 0 #ff0000,
+        -1px  1px 0 #ff0000,
+         1px  1px 0 #ff0000,
+        -2px -2px 0 #ff0000,
+         2px -2px 0 #ff0000,
+        -2px  2px 0 #ff0000,
+         2px  2px 0 #ff0000; }
+}
+
+pre {
+    font-family: 'Space Mono', monospace;
+    white-space: pre;
+    line-height: 1.2;
+    font-size: 14px;
+    color: #ffffff;
+    animation: rainbowBorder 5s linear infinite;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+.ascii-container:hover pre {
+    filter: brightness(1.2);
+    transform: scale(1.01);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    pre {
+        font-size: 12px;
+    }
+}
