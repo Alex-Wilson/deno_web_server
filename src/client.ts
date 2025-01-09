@@ -1,0 +1,1 @@
+console.log('“All matter originates and exists only by virtue of a force. We must assume behind this force the existence of a conscious and intelligent Mind. This Mind is the matrix of all matter.”')

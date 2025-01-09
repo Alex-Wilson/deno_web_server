@@ -1,0 +1,31 @@
+/* Importing the font used across the application. This can be centralized here to avoid repetition. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+/* Global styling for the body to ensure a consistent layout and background color. */
+body {
+    background-color: #2a2a2a;
+    margin: 0;
+    font-family: 'Space Mono', monospace; /* Defined once to avoid re-declaration in multiple files. */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+/* Responsive adjustments for smaller screen sizes. */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column; /* Stacks navigation links vertically on smaller screens. */
+        gap: 1rem;
+    }
+}
+
+/* Centralized animation for scrolling rainbow effect applied to text. */
+@keyframes rainbowScroll {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}

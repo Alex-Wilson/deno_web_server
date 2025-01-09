@@ -1,51 +1,64 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 
+// File paths
+const asciiLogoPath = "./public/extras/ascii-art.txt";
+const indexFilePath = "./public/views/index.html";
+
+// Cache ASCII art in memory
+const asciiLogo = await Deno.readTextFile(asciiLogoPath);
+
 async function handler(req: Request): Promise<Response> {
   const url = new URL(req.url);
-  
-  // Serve index.html for the root path
-  if (url.pathname === "/") {
-    const html = await Deno.readFile("./public/views/index.html");
-    return new Response(html, {
-      headers: {
-        "content-type": "text/html",
-      },
-    });
+  let path: string;
+
+  // Route files based on their actual location
+  if (url.pathname.startsWith("/src/")) {
+    path = `.${url.pathname}`; // Serve directly from ./src/
+  } else {
+    path = `./public${url.pathname}`; // Serve from ./public/ for everything else
   }
-  
-  // Serve CSS files
-  if (url.pathname.startsWith("/styles/") && url.pathname.endsWith(".css")) {
+
+  // Default to index.html for root requests
+  if (url.pathname === "/") {
+    path = indexFilePath;
+
     try {
-      const css = await Deno.readFile(`./public${url.pathname}`);
-      return new Response(css, {
-        headers: {
-          "content-type": "text/css",
-        },
+      // Read and replace the ASCII art placeholder in index.html
+      let htmlContent = await Deno.readTextFile(path);
+      htmlContent = htmlContent.replace("{{ASCII_LOGO}}", asciiLogo);
+
+      return new Response(htmlContent, {
+        headers: { "Content-Type": "text/html" },
       });
-    } catch {
-      return new Response("CSS file not found", { status: 404 });
+    } catch (error) {
+      console.error("Error serving index.html:", error.message);
+      return new Response("Error loading index.html", { status: 500 });
     }
   }
 
-  // Serve PDF files
-  if (url.pathname.startsWith("/public/documents/") && url.pathname.endsWith(".pdf")) {
-    try {
-      const pdf = await Deno.readFile(`.${url.pathname}`);
-      return new Response(pdf, {
-        headers: {
-          "content-type": "application/pdf",
-          "content-disposition": "inline",
-        },
-      });
-    } catch (error) {
-      console.error("Error serving PDF:", error);
-      return new Response("PDF file not found", { status: 404 });
-    }
+  try {
+    const file = await Deno.readFile(path);
+    const ext = path.split(".").pop();
+
+    // Set correct MIME types
+    const contentType = {
+      "html": "text/html",
+      "css": "text/css",
+      "js": "application/javascript",
+      "ts": "application/javascript", // Serve TypeScript as JavaScript
+      "txt": "text/plain",
+      "pdf": "application/pdf",
+    }[ext] || "text/plain";
+
+    return new Response(file, {
+      headers: { "Content-Type": contentType },
+    });
+  } catch (error) {
+    console.error(`Error serving file ${path}:`, error.message);
+    // Handle 404 errors
+    return new Response("File not found", { status: 404 });
   }
-  
-  // Return 404 for any other paths
-  return new Response("Not Found", { status: 404 });
 }
 
 console.log("Server running on http://localhost:8000");
-await serve(handler, { port: 8000 });
+serve(handler, { port: 8000 });

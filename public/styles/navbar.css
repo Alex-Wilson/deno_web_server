@@ -1,0 +1,38 @@
+/* Navbar container styles to maintain a consistent structure. */
+nav {
+    background-color: #1a1a1a; /* Dark background for contrast. */
+    padding: 1rem; /* Adds space around the navigation links. */
+    box-shadow: 0 2px 4px rgba(0, 255, 0, 0.1); /* Subtle glow effect below the navbar. */
+    position: sticky; /* Keeps the navbar at the top of the viewport when scrolling. */
+    top: 0;
+    z-index: 100; /* Ensures the navbar remains above other elements. */
+}
+
+/* Container for navigation items to ensure proper alignment and spacing. */
+.nav-container {
+    max-width: 1200px; /* Limits the width of the navbar on larger screens. */
+    margin: 0 auto; /* Centers the container horizontally. */
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line if necessary. */
+    gap: 1.5rem; /* Adds spacing between navigation items. */
+    justify-content: center; /* Centers navigation items horizontally. */
+    align-items: center; /* Aligns navigation items vertically. */
+}
+
+/* Styling for navigation links to enhance visibility and interactivity. */
+.nav-link {
+    color: #00ff00; /* Bright green for visibility. */
+    text-decoration: none; /* Removes underline from links. */
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Smooth hover effects. */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glowing effect. */
+    padding: 0.5rem 1rem; /* Adds padding around the links. */
+    border-radius: 4px; /* Slightly rounded edges for a softer look. */
+}
+
+/* Hover effects to indicate interactivity. */
+.nav-link:hover {
+    color: #ffffff; /* Changes text color to white. */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Intensifies the glowing effect. */
+    background-color: rgba(0, 255, 0, 0.1); /* Adds a translucent background. */
+}

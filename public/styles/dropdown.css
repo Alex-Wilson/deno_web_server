@@ -1,0 +1,72 @@
+/* Container for navigation links with dropdown functionality. */
+.nav-links {
+    display: flex; /* Aligns dropdowns horizontally by default. */
+    gap: 1.5rem; /* Adds spacing between each dropdown item. */
+    justify-content: center; /* Centers navigation links. */
+    align-items: center; /* Aligns links vertically. */
+}
+
+/* Styling for the dropdown container. */
+.dropdown {
+    position: relative; /* Allows positioning of the dropdown menu relative to the button. */
+    display: inline-block; /* Ensures dropdowns are treated as individual blocks. */
+}
+
+/* Button styling for dropdown triggers. */
+.dropbtn {
+    background-color: transparent; /* Matches the navbar background for seamless integration. */
+    color: #00ff00; /* Bright green for visibility. */
+    border: none; /* Removes any default button styling. */
+    padding: 0.5rem 1rem; /* Adds padding around the button text. */
+    font-size: 1rem;
+    cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity. */
+    font-family: 'Space Mono', monospace; /* Consistent font with the rest of the site. */
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glowing effect. */
+    transition: all 0.3s ease; /* Smooth hover effect. */
+}
+
+/* Hover effect for the dropdown button. */
+.dropbtn:hover {
+    color: #ffffff; /* Changes text color to white. */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Intensifies the glowing effect. */
+    background-color: rgba(0, 255, 0, 0.1); /* Adds a subtle background glow. */
+    border-radius: 5px; /* Rounds the edges slightly. */
+}
+
+/* Dropdown content styling. */
+.dropdown-content {
+    display: none; /* Hidden by default. */
+    position: absolute; /* Positioned relative to the dropdown button. */
+    background-color: #1a1a1a; /* Matches the navbar background for consistency. */
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.3); /* Subtle shadow effect for depth. */
+    padding: 0.5rem 0; /* Adds padding to the dropdown menu. */
+    min-width: 200px; /* Ensures a consistent dropdown width. */
+    z-index: 1; /* Keeps the dropdown above other content. */
+    border-radius: 5px; /* Rounds the edges slightly. */
+}
+
+/* Styling for individual dropdown items. */
+.dropdown-content a {
+    color: #00ff00; /* Bright green for visibility. */
+    padding: 0.5rem 1rem; /* Adds padding around each link. */
+    text-decoration: none; /* Removes underline from links. */
+    display: block; /* Ensures each link is on a new line. */
+    font-family: 'Space Mono', monospace; /* Consistent font with the rest of the site. */
+    font-size: 0.9rem;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glowing effect. */
+    transition: all 0.3s ease; /* Smooth hover effect. */
+}
+
+/* Hover effect for dropdown items. */
+.dropdown-content a:hover {
+    background-color: rgba(0, 255, 0, 0.2); /* Adds a translucent background. */
+    color: #ffffff; /* Changes text color to white. */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); /* Intensifies the glowing effect. */
+    border-radius: 3px; /* Adds a subtle rounding to the edges. */
+}
+
+/* Display dropdown content on hover. */
+.dropdown:hover .dropdown-content {
+    display: block; /* Reveals the dropdown menu. */
+}
